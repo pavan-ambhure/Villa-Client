@@ -1,24 +1,32 @@
-import logo from './logo.svg';
 import './App.css';
+import '@fontsource/roboto/300.css';
+import '@fontsource/roboto/400.css';
+import '@fontsource/roboto/500.css';
+import '@fontsource/roboto/700.css';
+
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Login from './components/login/Login';
+import Nav from './components/common/Nav';
+import Home from './components/home/Home';
+import CreateVilla from './components/createVilla/CreateVilla';
+import CreateVillaNumber from './components/createVillaNumber/CreateVillaNumber';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' element={<Login />} />
+          {/* <Route element={<Authenticate />}> */}
+          <Route path='/' element={<Nav />}>
+            <Route path='/Home' element={<Home />} />
+            <Route path='/CreateVilla' element={<CreateVilla />} />
+            <Route path='/CreateVillaNumber' element={<CreateVillaNumber />} />
+          </Route>
+          {/* </Route> */}
+        </Routes>
+      </BrowserRouter>
+    </>
   );
 }
 
